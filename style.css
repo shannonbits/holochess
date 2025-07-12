@@ -1,0 +1,555 @@
+:root {
+    --primary: #58cc02;
+    --primary-dark: #46a302;
+    --secondary: #1cb0f6;
+    --secondary-dark: #0c9ae4;
+    --dark: #333;
+    --light: #f8f9fa;
+    --accent: #ffc800;
+    --accent-dark: #e6b400;
+    --gray: #e0e0e0;
+    --dark-gray: #757575;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    letter-spacing: -1px;
+}
+
+.nav-link {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link.active {
+    color: var(--primary);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 3px 3px 0 0;
+}
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    background-color: var(--gray);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
+.stars {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-right: 0.3rem;
+}
+
+.rating {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.login-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.game-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.chessboard {
+    width: 500px;
+    height: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.game-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.game-info {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.game-info h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 6px;
+}
+
+.player.you {
+    background-color: rgba(88, 204, 2, 0.1);
+}
+
+.player.opponent {
+    background-color: rgba(28, 176, 246, 0.1);
+}
+
+.player-name {
+    font-weight: 600;
+}
+
+.player-stars {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+.game-status {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background-color: var(--gray);
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.move-history {
+    flex: 1;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.move-entry {
+    display: flex;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--gray);
+}
+
+.move-number {
+    color: var(--dark-gray);
+    margin-right: 1rem;
+    width: 30px;
+}
+
+.move-white, .move-black {
+    flex: 1;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.move-white:hover, .move-black:hover {
+    background-color: rgba(88, 204, 2, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.game-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+#new-game-btn {
+    background-color: var(--primary);
+    color: white;
+}
+
+#new-game-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+#resign-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#resign-btn:hover {
+    background-color: #e60000;
+}
+
+#offer-draw-btn {
+    background-color: var(--gray);
+}
+
+#offer-draw-btn:hover {
+    background-color: #d0d0d0;
+}
+
+/* Lessons Section */
+.lessons-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.lessons-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--dark);
+}
+
+.lesson-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.lesson-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+}
+
+.lesson-image {
+    height: 150px;
+    background-color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.lesson-content {
+    padding: 1.5rem;
+}
+
+.lesson-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.lesson-desc {
+    color: var(--dark-gray);
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.lesson-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lesson-stars {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.lesson-status {
+    padding: 0.3rem 0.8rem;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.streak-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.streak, .xp {
+    background-color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-weight: 600;
+}
+
+#streak-count, #total-stars {
+    color: var(--primary);
+}
+
+/* Puzzles Section */
+.puzzle-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+}
+
+.puzzle-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+#puzzle-board {
+    width: 450px;
+    height: 450px;
+}
+
+.puzzle-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.puzzle-difficulty {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.puzzle-instruction {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    flex: 1;
+}
+
+.puzzle-btn {
+    padding: 0.8rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.puzzle-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.puzzle-feedback {
+    min-height: 100px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Community Section */
+.community-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.community-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.leaderboard {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    display: flex;
+    padding: 1rem;
+    background-color: var(--gray);
+    font-weight: 600;
+}
+
+.leaderboard-header div {
+    flex: 1;
+}
+
+.leaderboard-header div:first-child {
+    flex: 0.5;
+}
+
+.leaderboard-entry {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray);
+    align-items: center;
+}
+
+.leaderboard-entry:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-rank {
+    flex: 0.5;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+.leaderboard-name {
+    flex: 1;
+    font-weight: 600;
+}
+
+.leaderboard-stars {
+    flex: 1;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.leaderboard-rating {
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .game-container {
+        flex-direction: column;
+    }
+    
+    .chessboard {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .puzzle-container {
+        flex-direction: column;
+    }
+    
+    #puzzle-board {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        margin: 0 0.5rem;
+    }
+    
+    .chessboard {
+        height: 400px;
+    }
+  }

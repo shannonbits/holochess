@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>holochess</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">holochess</div>
+        <nav>
+            <a href="#" class="nav-link active" data-section="play">play</a>
+            <a href="#" class="nav-link" data-section="learn">learn</a>
+            <a href="#" class="nav-link" data-section="puzzles">puzzles</a>
+            <a href="#" class="nav-link" data-section="community">community</a>
+        </nav>
+        <div class="user-panel">
+            <div class="star-rating">
+                <span class="stars">★★★☆☆</span>
+                <span class="rating">1200</span>
+            </div>
+            <button class="login-btn">sign in</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="play-section" class="section active">
+            <div class="game-container">
+                <div id="board" class="chessboard"></div>
+                <div class="game-controls">
+                    <div class="game-info">
+                        <h3>current game</h3>
+                        <div class="player-info">
+                            <div class="player you">
+                                <span class="player-name">you</span>
+                                <span class="player-stars">★★★☆☆ (1200)</span>
+                            </div>
+                            <div class="player opponent">
+                                <span class="player-name">opponent</span>
+                                <span class="player-stars">★★★★☆ (1600)</span>
+                            </div>
+                        </div>
+                        <div class="game-status">white's turn</div>
+                    </div>
+                    <div class="move-history" id="move-history"></div>
+                    <div class="action-buttons">
+                        <button id="new-game-btn" class="game-btn">new game</button>
+                        <button id="resign-btn" class="game-btn">resign</button>
+                        <button id="offer-draw-btn" class="game-btn">offer draw</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="learn-section" class="section">
+            <div class="lessons-container">
+                <h2>chess lessons</h2>
+                <div class="lesson-cards" id="lesson-cards">
+                    <!-- Filled by JavaScript -->
+                </div>
+                <div class="streak-container">
+                    <div class="streak">current streak: <span id="streak-count">0</span> days</div>
+                    <div class="xp">total stars: <span id="total-stars">15</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="puzzles-section" class="section">
+            <div class="puzzle-container">
+                <h2>daily puzzle</h2>
+                <div id="puzzle-board" class="chessboard"></div>
+                <div class="puzzle-info">
+                    <div class="puzzle-difficulty">
+                        difficulty: <span class="stars">★★★☆☆</span>
+                    </div>
+                    <div class="puzzle-instruction">find the best move for white</div>
+                    <button id="next-puzzle-btn" class="puzzle-btn">next puzzle</button>
+                    <div class="puzzle-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community-section" class="section">
+            <div class="community-container">
+                <h2>community leaderboard</h2>
+                <div class="leaderboard" id="leaderboard">
+                    <!-- Filled by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>holochess · uwu</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="js/chessLogic.js"></script>
+    <script src="js/lessons.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
